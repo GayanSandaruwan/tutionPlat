@@ -74,7 +74,7 @@
                             <div class="col-md-6">
                                 <input id="phone" type="number" class="form-control" name="phone" value="{{ old('phone') }}">
 
-                                @if ($errors->has('nic'))
+                                @if ($errors->has('phone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('phone') }}</strong>
                                     </span>

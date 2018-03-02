@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -27,6 +28,12 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <style>
+        body {
+            background-image: url("/images/gathering.jpg");
+            background-color: #cccccc;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -42,9 +49,13 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Student
+                <a class="navbar-brand" href="{{ url('/') }}" style="background-color: #002a80; font-style: italic; color: whitesmoke; font-size: 20pt">
+                    {{ config('app.name', 'Laravel Multi Auth Guard') }}
                 </a>
+                <a class="navbar-brand" href="{{ url('/') }}" style="background-color: orangered; font-style: normal; color: black; font-size: 20pt; padding-left: 0px; mso-cellspacing: 5px">
+                    .lk
+                </a>
+                <a class="navbar-brand">Student</a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -57,11 +68,13 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (!Auth::guard('student')->user())
-                        <li><a href="{{ url('/student/login') }}">Login</a></li>
-                        <li><a href="{{ url('/student/register') }}">Register</a></li>
+                        <li><a href="{{ url('/student/login') }}" style="background-color: #91cbe8">Login  <i class="fa fa-address-book" ></i></a></li>
+                        <li><a href="{{ url('/student/register') }}"style="background-color: #ffdb99">Register   <i class="fas fa-accusoft " ></i></a></li>
                     @else
+                        <li><a href="{{ url('/student/notifications') }}"style="background-color: #ffdb99">Notifications   <i class="fas fa-bell  " ></i></a></li>
+                        <li><a href="{{ url('student/search') }}"style="background-color: #fde19a">Search   <i class="fas fa-neuter   " ></i></a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::guard('student')->user()->name }} <span class="caret"></span>
                             </a>
 
@@ -85,6 +98,7 @@
                             </ul>
                         </li>
                     @endif
+                    <li><a href="{{ url('/about') }}"style="background-color: #f7ecb5">About Us   <i class="fas fa-blackberry" ></i></a></li>
                 </ul>
             </div>
         </div>

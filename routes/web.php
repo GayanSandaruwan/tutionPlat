@@ -49,4 +49,8 @@ Route::group(['prefix' => 'teacher'], function () {
 
         return view('teacher.auth.profile');
     });
+    Route::get('/tuition',function(){
+
+        return view('teacher.tuition.add_tuition');
+    });
 });

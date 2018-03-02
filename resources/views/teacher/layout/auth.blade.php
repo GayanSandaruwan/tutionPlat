@@ -12,13 +12,19 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <style>
+        body {
+            background-image: url("/images/gathering.jpg");
+            background-color: #cccccc;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -34,9 +40,13 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/teacher') }}">
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Teacher
+                <a class="navbar-brand" href="{{ url('/') }}" style="background-color: #002a80; font-style: italic; color: whitesmoke; font-size: 20pt">
+                    {{ config('app.name', 'Laravel Multi Auth Guard') }}
                 </a>
+                <a class="navbar-brand" href="{{ url('/') }}" style="background-color: orangered; font-style: normal; color: black; font-size: 20pt; padding-left: 0px; mso-cellspacing: 5px">
+                    .lk
+                </a>
+                <a class="navbar-brand">Teacher</a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -49,11 +59,13 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (!Auth::guard('teacher')->user())
-                        <li><a href="{{ url('/teacher/login') }}">Login</a></li>
-                        <li><a href="{{ url('/teacher/register') }}">Register</a></li>
+                        <li><a href="{{ url('/teacher/login') }}" style="background-color: #91cbe8">Login  <i class="fa fa-address-book" ></i></a></li>
+                        <li><a href="{{ url('/teacher/register') }}"style="background-color: #ffdb99">Register   <i class="fas fa-accusoft " ></i></a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <li><a href="{{ url('/teacher/tuition') }}"style="background-color: #ffdb99">Create Tuition   <i class="fas fa-newspaper  " ></i></a></li>
+                        <li><a href="{{ url('/teacher/requests') }}"style="background-color: #faf2cc">Requests  <i class="fas fa-bell  " ></i></a></li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::guard('teacher')->user()->name }} <span class="caret"></span>
                             </a>
 
@@ -82,6 +94,7 @@
                             </ul>
                         </li>
                     @endif
+                    <li><a href="{{ url('/about') }}"style="background-color: #f7ecb5">About Us   <i class="fas fa-blackberry" ></i></a></li>
                 </ul>
             </div>
         </div>
@@ -94,6 +107,6 @@
 </body>
 
 <footer>
-    @include('student.layout.footer')
+    @include('teacher.layout.footer')
 </footer>
 </html>

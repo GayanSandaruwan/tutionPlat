@@ -1,7 +1,6 @@
 <div id="footer">
     <div class="container">
         <div class="row">
-            <h3 class="footertext">About Us:</h3>
             <br>
             <div class="col-md-4" style ='background-color: deepskyblue; padding: 20px; color: whitesmoke'>
                     <center>
