@@ -16,5 +16,8 @@ class Tuition extends Model
     protected $fillable = [
         'subject', 'grade', 'description','standard_charge','per_additional_hour','teacher_id',];
 
+    public function tuition_places(){
+        return $this->hasMany('App\TuitionPlace');
+    }
 
 }

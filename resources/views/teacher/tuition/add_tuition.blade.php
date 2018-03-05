@@ -30,11 +30,34 @@
                             <label for="places" class="col-md-4 control-label">Places</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="places" type="text" class="form-control" name="places" value="{{ old('email') }}">
 
                                 @if ($errors->has('places'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('places') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('grade') ? ' has-error' : '' }}">
+                            <label for="grade" class="col-md-4 control-label">Your Grade</label>
+
+                            <div class="col-md-6">
+                                <select class="custom-select custom-select-lg mb-3" id="grade" name="grade" value="{{old('grade')}}">
+                                    <option value="4">Grade 4</option>
+                                    <option value="5">Grade 5</option>
+                                    <option value="6">Grade 6</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                    <option value="12">Grade 12</option>
+                                    <option value="13">Grade 13</option>
+                                </select>
+                                @if ($errors->has('grade'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('grade') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -81,11 +104,11 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" name="submitbutton" value="submit">
                                     Add Class
+                                </button>
+                                <button class="btn btn-primary" name="submitbutton" value="cancel">
+                                    Cancel
                                 </button>
                             </div>
                         </div>

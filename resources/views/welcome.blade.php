@@ -169,22 +169,35 @@
             @endif
 
             <div class="content">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary">Subject</button>
-                    <button type="button" class="btn btn-secondary">Teacher Name</button>
-                    <button type="button" class="btn btn-secondary">Area</button>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-3">
-                        <form action="" class="search-form">
-                            <div class="form-group has-feedback">
-                                <label for="search" class="sr-only">Search teachers</label>
-                                <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                                <span class="fa fa-neuter  form-control-feedback"></span>
-                            </div>
-                        </form>
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('student/search') }}">
+                    {{ csrf_field() }}
+
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="submit" class="btn btn-secondary" name="submitbutton" value="subject">Subject</button>
+                        <button type="submit" class="btn btn-secondary" name="submitbutton" value="teacher">Teacher Name</button>
+                        <button type="submit" class="btn btn-secondary" name="submitbutton" value="place">Area</button>
                     </div>
-                </div>
+                    <div class="form-group{{ $errors->has('search') ? ' has-error' : '' }}">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-3">
+                                    <form action="" class="search-form">
+                                        <div class="form-group has-feedback">
+                                            <label for="search" class="sr-only">Search teachers</label>
+                                            <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                                            <span class="fa fa-neuter  form-control-feedback"></span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @if ($errors->has('search'))
+                            <span class="help-block" style="color:red; font-style:oblique;">
+                                        <strong>{{ $errors->first('search') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </form>
                 <div class="row">
                     <div class="title m-b-md">
                         Tuition.lk

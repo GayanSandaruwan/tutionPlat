@@ -31,6 +31,7 @@ Route::group(['prefix' => 'student'], function () {
 
         return view('student.auth.profile');
     });
+    Route::post('/search','TuitionRequestController@search');
 });
 
 Route::group(['prefix' => 'teacher'], function () {
@@ -53,4 +54,5 @@ Route::group(['prefix' => 'teacher'], function () {
 
         return view('teacher.tuition.add_tuition');
     });
+    Route::post('/tuition/new','TutionController@create_tuition');
 });

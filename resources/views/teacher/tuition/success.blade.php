@@ -1,7 +1,17 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: gayan
- * Date: 3/2/18
- * Time: 6:35 PM
- */
+@extends('teacher.layout.auth')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Dashboard</div>
+
+                    <div class="panel-body">
+                        You  Successfully created a class.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
