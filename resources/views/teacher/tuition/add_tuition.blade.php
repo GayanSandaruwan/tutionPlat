@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="nic" class="col-md-4 control-label">Brief description of yours</label>
+                            <label for="nic" class="col-md-4 control-label">Brief description of Class</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" type="text" class="form-control" name="description" value="{{ old('description') }}">

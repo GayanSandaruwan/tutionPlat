@@ -159,12 +159,71 @@
                     </a>
                 </div>
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('student/login') }}">Login</a>
-                        <a href="{{ url('student/register') }}">Register</a>
-                    @endauth
+                    @if (!Auth::guard('student')->user() and !Auth::guard('teacher')->user())
+                        <li><a href="{{ url('/student/login') }}">Login  <i class="fa fa-address-book" ></i></a></li>
+                        <li><a href="{{ url('/student/register') }}">Register   <i class="fas fa-accusoft " ></i></a></li>
+                    @elseif(Auth::guard('student')->user())
+                        <li><a href="{{ url('/student/notifications') }}">Notifications   <i class="fas fa-bell  " ></i></a></li>
+                        <li><a href="{{ url('/') }}">Search   <i class="fas fa-neuter   " ></i></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::guard('student')->user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/student/logout') }}"
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/student/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/student/profile') }}">
+                                        Edit Profile
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @else
+                            <li class="dropdown">
+                            <li><a href="{{ url('/teacher/tuition') }}">Create Tuition   <i class="fas fa-newspaper  " ></i></a></li>
+                            <li><a href="{{ url('/teacher/requests') }}">Requests  <i class="fas fa-bell  " ></i></a></li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::guard('teacher')->user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/teacher/logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/teacher/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/teacher/profile') }}">
+                                        Edit Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/teacher/feedback') }}">
+                                        View Feedback
+                                    </a>
+                                </li>
+                            </ul>
+                            </li>
+                    @endif
+                    <li><a href="{{ url('/about') }}">About Us   <i class="fas fa-blackberry" ></i></a></li>
+
                 </div>
             @endif
 

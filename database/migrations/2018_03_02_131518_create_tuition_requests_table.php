@@ -19,12 +19,13 @@ class CreateTuitionRequestsTable extends Migration
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('tuition_id');
             $table->unsignedInteger('teacher_id');
-            $table->boolean('teacher_responded');
-            $table->boolean('response');
+            $table->string('teacher_responded');
+            $table->string('response');
             $table->string('description');
             $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('tuition_id')->references('id')->on('tuitions');
             $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->unique(['teacher_id','student_id','tuition_id']);
 
         });
     }

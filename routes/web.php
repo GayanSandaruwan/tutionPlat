@@ -27,11 +27,21 @@ Route::group(['prefix' => 'student'], function () {
   Route::post('/password/reset', 'StudentAuth\ResetPasswordController@reset')->name('password.email');
   Route::get('/password/reset', 'StudentAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'StudentAuth\ResetPasswordController@showResetForm');
-    Route::get('/profile',function(){
+
+  Route::get('/profile',['middleware'=>['web','auth','auth:student']],function(){
 
         return view('student.auth.profile');
     });
-    Route::post('/search','TuitionRequestController@search');
+
+  Route::post('/search','TuitionRequestController@search');
+
+  Route::group(['prefix'=>'tuition','middleware'=>'auth:student'],function (){
+
+        Route::post('/view','TuitionRequestController@viewTuition');
+        Route::post('/request','TuitionRequestController@requestTuition');
+        Route::get('/my','TuitionRequestController@student_tuitions');
+        Route::post('/feedback','FeedbackController@feedbackforom');
+    });
 });
 
 Route::group(['prefix' => 'teacher'], function () {
@@ -46,13 +56,20 @@ Route::group(['prefix' => 'teacher'], function () {
   Route::post('/password/reset', 'TeacherAuth\ResetPasswordController@reset')->name('password.email');
   Route::get('/password/reset', 'TeacherAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'TeacherAuth\ResetPasswordController@showResetForm');
-    Route::get('/profile',function(){
 
-        return view('teacher.auth.profile');
-    });
-    Route::get('/tuition',function(){
+  Route::group(['middleware'=>['web','auth:teacher']],function (){
+      Route::get('/profile',function(){
 
-        return view('teacher.tuition.add_tuition');
-    });
-    Route::post('/tuition/new','TutionController@create_tuition');
+          return view('teacher.auth.profile');
+      });
+      Route::get('/tuition',function(){
+
+          return view('teacher.tuition.add_tuition');
+      });
+      Route::post('/tuition/new','TutionController@create_tuition');
+
+      Route::get('/requests','TuitionRequestController@view_requests');
+      Route::post('/requests/process','TuitionRequestController@process_tuition_request');
+  });
+
 });

@@ -71,8 +71,8 @@
                         <li><a href="{{ url('/student/login') }}" style="background-color: #91cbe8">Login  <i class="fa fa-address-book" ></i></a></li>
                         <li><a href="{{ url('/student/register') }}"style="background-color: #ffdb99">Register   <i class="fas fa-accusoft " ></i></a></li>
                     @else
-                        <li><a href="{{ url('/student/notifications') }}"style="background-color: #ffdb99">Notifications   <i class="fas fa-bell  " ></i></a></li>
-                        <li><a href="{{ url('student/search') }}"style="background-color: #fde19a">Search   <i class="fas fa-neuter   " ></i></a></li>
+                        <li><a href="{{ url('/student/tuition/my') }}"style="background-color: #ffdb99">My Tuitions   <i class="fas fa-bell  " ></i></a></li>
+                        <li><a href="{{ url('/') }}"style="background-color: #fde19a">Search   <i class="fas fa-neuter   " ></i></a></li>
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::guard('student')->user()->name }} <span class="caret"></span>

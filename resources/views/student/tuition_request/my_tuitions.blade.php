@@ -1,4 +1,4 @@
-@extends('teacher.layout.auth')
+@extends('student.layout.auth')
 <style>
     .tuition-label{
         /*background-color: aliceblue;*/
@@ -28,7 +28,7 @@
     @foreach($requests as $request)
         <div class="panel-body">
             <div class="col-md-6 col-md-offset-3 box">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/teacher/requests/process') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/tuition/feedback') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
@@ -68,14 +68,19 @@
                             <label class="tuition-detail" for="per_additional_hour">{{$request->stu_desc}}</label>
                         </div>
                         <input type="hidden"id="request_id" name="request_id" value="{{$request->request_id}}">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary" name="requestbutton" value="confirm">
-                                Accept Request
-                            </button>
-                            <button type="submit" class="btn btn-primary" name="requestbutton" value="discard">
-                                Decline Request
-                            </button>
-                        </div>
+                        @if($request->response == 'accepted')
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary" name="feedbackbutton" value="confirm">
+                                    Leave Feedback
+                                </button>
+                            </div>
+                            @else
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary" name="feedbackbutton" value="confirm" disabled>
+                                    Leave Feedback
+                                </button>
+                            </div>
+                            @endif
                     </div>
                 </form>
             </div>
