@@ -1,53 +1,44 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## A Platform for teachers and students
+Intension of this is to build a platform for the tuition community to find teachers and potential students.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Software prerequests
+1. composer
+2. Laravel 5.5+
+3. mysql server 14.0 +
+4. php 7.1 +
 
-## About Laravel
+## Setting up
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+1. Start the mysql server and create a database (eg: in mysql terminal :- "create database tuiPlat")
+2. Create a database user and assign all ther rights on the database (eg: in mysql terminal :- "CREATE USER 'tuiPlatUser'@'localhost' IDENTIFIED BY 'password';"
+"GRANT ALL PRIVILEGES ON 'tuiPlat' . * TO 'tuiPlatUser'@'localhost';"
+3. Go to the project directory and open the .env file. (Warning : If you are using a windows system. There won't be a .env file. But there will be a .env.example file. To create a .env file open the command prompt in the project directory. Copy paste following. "copy /y .env.example .env"
+4. Open the .env file in a text editor and in the .env file replace the APP_NAME=Laravel with APP_NAME=Tuition likewise, Replace
+DB_DATABASE=tuiPlat
+DB_USERNAME=tuiPlatUser
+DB_PASSWORD='password given to the user'
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+5. To enable password reset mail sending fill the following lines in the environment file properly.
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME='your email address'
+MAIL_PASSWORD='your email password'
+MAIL_ENCRYPTION=ssl 
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Some times mails won't diliver until you allow low security apps in you email settings. (Google how to do this)
 
-## Learning Laravel
+6. Now save and close the .env file.
+7. Open a command prompt/command line in the project directory and type following commands in order.
+8. "composer install" :- This will install all the dipendencies of the project.
+9. "php artisan migrate" :- This will do the database migrations to create the tables. This will fail if you haven't propery set up the database parameters in the .env
+10. "php artisan serve" :- Start the development server.
+11. Open the browser and redirect to the 127.0.0.1:8000 
+12. Test the functionalities.
+13. Enjoy.
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
-
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
+## Please consider this project was created just to learn Laravel framework.
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
