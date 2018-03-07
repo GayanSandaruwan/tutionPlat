@@ -83,7 +83,7 @@
             </form>
         </div>
         <div class="col-md-6 box">
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/teacher/feedback')}}">
+            <form class="form-horizontal" role="form" method="GET" action="{{ url('/student/teacher/feedback')}}">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                     <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" class="btn btn-primary" name="requestbutton" value="{{$tuition->id}}">
+                        <button type="submit" class="btn btn-primary" name="requestbutton" value="{{$tuition->teacher_id}}">
                             View Teacher feedbacks
                         </button>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Feedback;
+use App\Teacher;
 use App\Tuition;
 use App\TuitionRequest;
 use Illuminate\Http\Request;
@@ -56,6 +57,16 @@ class FeedbackController extends Controller
 
             }
         }
+
+    }
+
+    public function teacher_feedback_form(Request $request){
+        $teacher_id = $request->requestbutton;
+        var_dump($teacher_id);
+        $feedbacks = Feedback::where('teacher_id',$teacher_id)->get();
+        $teacher = Teacher::where('id',$teacher_id)->get();
+//        var_dump($teacher);
+        return view('student.feedback.teacher_profile',['feedbacks'=>$feedbacks,'teacher'=>$teacher]);
 
     }
 }

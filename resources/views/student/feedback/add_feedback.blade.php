@@ -38,7 +38,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('feedback') ? ' has-error' : '' }}">
-                                    <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                    <label for="feedback" class="col-md-4 control-label">Your Feedback
 
                                     <div class="col-md-6">
                                         <textarea id="feedback" type="text" class="form-control" name="feedback">

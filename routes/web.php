@@ -48,6 +48,7 @@ Route::group(['prefix' => 'student'], function () {
         Route::post('/feedback','FeedbackController@add_feedback');
 
   });
+  Route::get('/teacher/feedback','FeedbackController@teacher_feedback_form');
 
   Route::get('/blocked',function (){
         return view('student.blocked');
