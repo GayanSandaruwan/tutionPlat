@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('address',500);
             $table->date('birthday');
             $table->string('grade');
-            $table->boolean('status');              // Active or blocked
+            $table->string('status');              // Active or blocked
             $table->string('gender');
             $table->rememberToken();
             $table->timestamps();

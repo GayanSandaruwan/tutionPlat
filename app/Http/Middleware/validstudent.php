@@ -17,9 +17,9 @@ class validstudent
      */
     public function handle($request, Closure $next, $guard = 'student')
     {
-        if (Auth::guard($guard)->user()->status==0) {
+        if (Auth::guard($guard)->user()->status!='active') {
 //                Auth::guard($guard)->logout();
-            return view('blocked');
+            return redirect('/student/blocked');
         }
 
         return $next($request);

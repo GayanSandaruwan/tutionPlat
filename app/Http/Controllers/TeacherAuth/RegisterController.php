@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'description'=> $data['description'],
             'phone' => $data['phone'],
             'address'=> $data['address'],
-            'status'=>  true,                               // Active by default
+            'status'=>  'pending',                               // Active by default
             'nic'=>$data['nic'],
             'gender'=>$data['gender'],
         ]);

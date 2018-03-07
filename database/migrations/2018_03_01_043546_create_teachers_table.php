@@ -21,7 +21,7 @@ class CreateTeachersTable extends Migration
             $table->string('description',1000);
             $table->string('phone');
             $table->string('address',500);
-            $table->boolean('status');
+            $table->string('status');
             $table->string('gender',12);
             $table->rememberToken();
             $table->timestamps();

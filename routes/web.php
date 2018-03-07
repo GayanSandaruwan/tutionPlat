@@ -30,7 +30,7 @@ Route::group(['prefix' => 'student'], function () {
 
   Route::post('/search','TuitionRequestController@search');
 
-  Route::group(['prefix'=>'/profile','middleware'=>['web','student']],function(){
+  Route::group(['prefix'=>'/profile','middleware'=>['web','student','validstudent',]],function(){
 
         Route::get('/view',function (){
             return view('student.auth.profile');
@@ -39,7 +39,7 @@ Route::group(['prefix' => 'student'], function () {
     });
 
 
-  Route::group(['prefix'=>'tuition','middleware'=>['web','student']],function (){
+  Route::group(['prefix'=>'tuition','middleware'=>['web','student','validstudent',]],function (){
 
         Route::post('/view','TuitionRequestController@viewTuition');
         Route::post('/request','TuitionRequestController@requestTuition');
@@ -48,6 +48,10 @@ Route::group(['prefix' => 'student'], function () {
         Route::post('/feedback','FeedbackController@add_feedback');
 
   });
+
+  Route::get('/blocked',function (){
+        return view('student.blocked');
+    });
 });
 
 Route::group(['prefix' => 'teacher'], function () {
@@ -63,7 +67,7 @@ Route::group(['prefix' => 'teacher'], function () {
   Route::get('/password/reset', 'TeacherAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'TeacherAuth\ResetPasswordController@showResetForm');
 
-  Route::group(['middleware'=>['web','teacher']],function (){
+  Route::group(['middleware'=>['web','teacher','validteacher',]],function (){
       Route::get('/profile',function(){
 
           return view('teacher.auth.profile');
@@ -79,4 +83,9 @@ Route::group(['prefix' => 'teacher'], function () {
       Route::post('/profile','Profile@update_teacher_profile');
   });
 
+  Route::get('/blocked',function (){
+        return view('teacher.blocked');
+    });
 });
+
+

@@ -17,9 +17,9 @@ class ValidTeacher
      */
     public function handle($request, Closure $next,$guard = 'teacher')
     {
-        if (!Auth::guard($guard)->user()->status==0) {
+        if (Auth::guard($guard)->user()->status!='active') {
 //            Auth::guard($guard)->logout();
-            return view('blocked');
+            return redirect('/teacher/blocked');
         }
         return $next($request);
     }
