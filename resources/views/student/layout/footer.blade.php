@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row">
-            <p><center><a href="#">Contact Stuff Here</a> <p class="footertext">Copyright 2018</p></center></p>
+            <p><center><a href="#">info@tuition.lk tel:0112459450 fax : 0112459350</a> <p class="footertext">Copyright 2018</p></center></p>
         </div>
     </div>
 </div>
