@@ -20,10 +20,12 @@ class CreateFeedbackTable extends Migration
             $table->unsignedInteger('tuition_id');
             $table->unsignedInteger('teacher_id');
             $table->integer('rating');
-            $table->string('feedback');
+            $table->string('feedback',1000);
             $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->foreign('tuition_id')->references('id')->on('tuitions');
+            $table->unique(['teacher_id','student_id','tuition_id']);
+
         });
     }
 

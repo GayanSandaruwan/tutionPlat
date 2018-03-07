@@ -56,7 +56,7 @@
 
                                 <div class="col-md-6">
                                 <textarea id="description" type="text" class="form-control" name="description" value="{{ Auth::guard('teacher')->user()->description }}">
-                                {{ old('description') }}
+                                {{ Auth::guard('teacher')->user()->description }}
                                 </textarea>
                                     @if ($errors->has('description'))
                                         <span class="help-block">
@@ -136,10 +136,10 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Register
+                                    <button type="submit" name='updatebutton' value="{{true}}" class="btn btn-primary">
+                                        Update
                                     </button>
-                                    <button action="{{url('/teacher/home')}}" class="btn btn-primary">
+                                    <button type="submit" name="updatebutton" value="{{false}}" class="btn btn-primary">
                                         Cancel
                                     </button>
                                 </div>

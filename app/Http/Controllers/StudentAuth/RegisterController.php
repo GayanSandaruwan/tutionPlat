@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\StudentAuth;
 
 use App\Student;
+use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -98,4 +99,5 @@ class RegisterController extends Controller
     {
         return Auth::guard('student');
     }
+
 }

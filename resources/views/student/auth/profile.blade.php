@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/profile') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/profile/view') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -145,10 +145,10 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" name='updatebutton' value="{{true}}" class="btn btn-primary">
                                         Update
                                     </button>
-                                    <button href="{{url('/student/home')}}" class="btn btn-primary">
+                                    <button type="submit" name="updatebutton" value="{{false}}" class="btn btn-primary">
                                         Cancel
                                     </button>
                                 </div>

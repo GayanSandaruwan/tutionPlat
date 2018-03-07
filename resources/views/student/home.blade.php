@@ -11,7 +11,7 @@
                     You are logged in as Student!
                 </div>
                 <div class="row">
-                    {{Auth::user()->subject}}
+                    {{Auth::guard('student')->user()->subject}}
                 </div>
             </div>
         </div>

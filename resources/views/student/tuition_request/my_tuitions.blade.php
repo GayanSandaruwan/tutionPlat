@@ -28,7 +28,7 @@
     @foreach($requests as $request)
         <div class="panel-body">
             <div class="col-md-6 col-md-offset-3 box">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/tuition/feedback') }}">
+                <form class="form-horizontal" role="form" method="GET" action="{{ url('/student/tuition/feedback') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">

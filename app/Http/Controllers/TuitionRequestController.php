@@ -67,7 +67,8 @@ class TuitionRequestController extends Controller
         $teacher =  $data['search'];
         $tuitions = DB::table('tuitions')->leftJoin('tuition_places','tuitions.id','=','tuition_places.tuition_id')
             ->leftJoin('teachers','tuitions.teacher_id','=','teachers.id')
-            ->select('tuitions.*','tuition_places.*','teachers.*')->where('teachers.name','like',"%" . $teacher . "%")->latest('tuitions.created_at')->get();
+            ->select('tuitions.*','tuition_places.*','teachers.*')
+            ->where('teachers.name','like',"%" . $teacher . "%")->latest('tuitions.created_at')->get();
 
         return $tuitions;
     }

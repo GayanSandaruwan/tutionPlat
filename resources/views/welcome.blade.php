@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Tuition.lk</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -163,7 +163,7 @@
                         <li><a href="{{ url('/student/login') }}">Login  <i class="fa fa-address-book" ></i></a></li>
                         <li><a href="{{ url('/student/register') }}">Register   <i class="fas fa-accusoft " ></i></a></li>
                     @elseif(Auth::guard('student')->user())
-                        <li><a href="{{ url('/student/notifications') }}">Notifications   <i class="fas fa-bell  " ></i></a></li>
+                        <li><a href="{{ url('/student/tuition/my') }}">Notifications   <i class="fas fa-bell  " ></i></a></li>
                         <li><a href="{{ url('/') }}">Search   <i class="fas fa-neuter   " ></i></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -183,7 +183,7 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/student/profile') }}">
+                                    <a href="{{ url('/student/profile/view') }}">
                                         Edit Profile
                                     </a>
                                 </li>

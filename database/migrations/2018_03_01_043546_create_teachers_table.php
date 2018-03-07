@@ -22,6 +22,7 @@ class CreateTeachersTable extends Migration
             $table->string('phone');
             $table->string('address',500);
             $table->boolean('status');
+            $table->string('gender',12);
             $table->rememberToken();
             $table->timestamps();
         });

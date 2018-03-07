@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'phone'=> 'required |numeric | min:700000000|max:94790000000',
             'address'=> 'required|max:500|min:10',
             'nic'=> 'required|min:10|max:12',
+            'gender'=>'required',
         ]);
     }
 
@@ -76,6 +77,7 @@ class RegisterController extends Controller
             'address'=> $data['address'],
             'status'=>  true,                               // Active by default
             'nic'=>$data['nic'],
+            'gender'=>$data['gender'],
         ]);
     }
 
