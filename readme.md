@@ -38,6 +38,19 @@ Some times mails won't diliver until you allow low security apps in you email se
 13. Enjoy.
 
 
+##Functionalities
+1. Creating accounts as Teacher/Student
+2. Teachers can post tuitions.
+3. Students can seach and request for the tuitions.
+4. Teachers can accept/reject tuition requests with a message.
+5. Once a teacher accept a request, stdudent become a member of the tuition.
+So, now the student can give feedback about the tuition class.
+6. Students can search tuitions by subject, Area or the name of the teacher.
+7. Feedbacks for the teachers are visible to every student.
+8. Admin can create other admins after loggin in as an admin.
+9. Admin can accept the teachers requests to complete the registration.
+10. Admin can deactivate or activate any student or teacher account.
+
 ## Please consider this project was created just to learn Laravel framework.
 ## License
 
