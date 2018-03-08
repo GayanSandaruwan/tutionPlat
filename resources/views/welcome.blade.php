@@ -140,12 +140,7 @@
         </style>
     </head>
     <body>
-        <h1 style="position:absolute; right: 460px; top:70px;color: green">
-        Your education Your way
-        </h1>
-        <h1 style="position:absolute; right: 420px; top:120px">
-            BIG DREAMS COME TRUE HERE
-        </h1>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-left links">
@@ -226,7 +221,13 @@
             @endif
 
             <div class="content">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('student/search') }}">
+                <h1 style="position:relative; color: #3596e0 " >
+                    Your education Your way
+                </h1>
+                <h1 style="position:relative; color: green;">
+                    BIG DREAMS COME TRUE HERE
+                </h1>
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('student/search') }}" style="position: center;">
                     {{ csrf_field() }}
 
                     <div class="btn-group" role="group" aria-label="Basic example">
