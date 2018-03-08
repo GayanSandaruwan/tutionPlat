@@ -45,7 +45,9 @@ class TuitionRequestController extends Controller
         $place = $data['search'];
         $tuitions = DB::table('tuitions')->leftJoin('tuition_places','tuitions.id','=','tuition_places.tuition_id')
             ->leftJoin('teachers','tuitions.teacher_id','=','teachers.id')
-            ->select('tuitions.*','tuition_places.*','teachers.*')->where('tuition_places.place','like',"%" . $place . "%")->latest('tuitions.created_at')->get();
+            ->select('tuitions.*','tuition_places.*','teachers.*')
+            ->where('tuition_places.place','ilike',"%" . $place . "%")
+            ->latest('tuitions.created_at')->get();
 
         return $tuitions;
     }
@@ -56,7 +58,9 @@ class TuitionRequestController extends Controller
         $subject = $data['search'];
         $tuitions = DB::table('tuitions')->leftJoin('tuition_places','tuitions.id','=','tuition_places.tuition_id')
             ->leftJoin('teachers','tuitions.teacher_id','=','teachers.id')
-            ->select('tuitions.*','tuition_places.*','teachers.*')->where('tuitions.subject','like',"%" . $subject . "%")->latest('tuitions.created_at')->get();
+            ->select('tuitions.*','tuition_places.*','teachers.*')
+            ->where('tuitions.subject','ilike',"%" . $subject . "%")
+            ->latest('tuitions.created_at')->get();
 
         return $tuitions;
     }
@@ -68,7 +72,8 @@ class TuitionRequestController extends Controller
         $tuitions = DB::table('tuitions')->leftJoin('tuition_places','tuitions.id','=','tuition_places.tuition_id')
             ->leftJoin('teachers','tuitions.teacher_id','=','teachers.id')
             ->select('tuitions.*','tuition_places.*','teachers.*')
-            ->where('teachers.name','like',"%" . $teacher . "%")->latest('tuitions.created_at')->get();
+            ->where('teachers.name','ilike',"%" . $teacher . "%")
+            ->latest('tuitions.created_at')->get();
 
         return $tuitions;
     }

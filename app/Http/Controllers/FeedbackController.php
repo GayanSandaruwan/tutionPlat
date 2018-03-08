@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Feedback;
+use App\Student;
 use App\Teacher;
 use App\Tuition;
 use App\TuitionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class FeedbackController extends Controller
@@ -41,7 +43,7 @@ class FeedbackController extends Controller
             $this->add_feedback_validator($request->all())->validate();
             $tuition_id = $request->tuition_id;
 
-            $tuition = Tuition::find($tuition_id)->get()[0];
+            $tuition = Tuition::where('id',$tuition_id)->get()[0];
             $feedback = new Feedback();
             $feedback->student_id = Auth::guard('student')->user()->id;
             $feedback->teacher_id = $tuition->teacher_id;
@@ -62,10 +64,15 @@ class FeedbackController extends Controller
 
     public function teacher_feedback_form(Request $request){
         $teacher_id = $request->requestbutton;
-        var_dump($teacher_id);
-        $feedbacks = Feedback::where('teacher_id',$teacher_id)->get();
-        $teacher = Teacher::where('id',$teacher_id)->get();
-//        var_dump($teacher);
+//        var_dump($teacher_id);
+        $feedbacks=DB::table('feedback')
+            ->leftJoin('students','feedback.student_id','=','students.id')
+            ->where('feedback.teacher_id',$teacher_id)
+            ->select('feedback.*','students.name')->get();
+//        $feedbacks = Feedback::where('teacher_id',$teacher_id)->get();
+        $teacher = Teacher::where('id',$teacher_id)->get()[0];
+
+//        var_dump($feedbacks);
         return view('student.feedback.teacher_profile',['feedbacks'=>$feedbacks,'teacher'=>$teacher]);
 
     }
