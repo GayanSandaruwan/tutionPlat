@@ -41,12 +41,14 @@ class TuitionRequestController extends Controller
     }
 
     public function searach_by_place(array $data){
-
+        /*
+         * If using pgsql use ilike instead of the like to have better search
+         */
         $place = $data['search'];
         $tuitions = DB::table('tuitions')->leftJoin('tuition_places','tuitions.id','=','tuition_places.tuition_id')
             ->leftJoin('teachers','tuitions.teacher_id','=','teachers.id')
             ->select('tuitions.*','tuition_places.*','teachers.*')
-            ->where('tuition_places.place','ilike',"%" . $place . "%")
+            ->where('tuition_places.place','like',"%" . $place . "%")
             ->latest('tuitions.created_at')->get();
 
         return $tuitions;
@@ -54,12 +56,14 @@ class TuitionRequestController extends Controller
 
 
     public function searach_by_subject(array $data){
-
+        /*
+         * If using pgsql use ilike instead of the like to have better search
+         */
         $subject = $data['search'];
         $tuitions = DB::table('tuitions')->leftJoin('tuition_places','tuitions.id','=','tuition_places.tuition_id')
             ->leftJoin('teachers','tuitions.teacher_id','=','teachers.id')
             ->select('tuitions.*','tuition_places.*','teachers.*')
-            ->where('tuitions.subject','ilike',"%" . $subject . "%")
+            ->where('tuitions.subject','like',"%" . $subject . "%")
             ->latest('tuitions.created_at')->get();
 
         return $tuitions;
@@ -68,11 +72,14 @@ class TuitionRequestController extends Controller
 
     public function searach_by_teacher(array $data){
 
+        /*
+         * If using pgsql use ilike instead of the like to have better search
+         */
         $teacher =  $data['search'];
         $tuitions = DB::table('tuitions')->leftJoin('tuition_places','tuitions.id','=','tuition_places.tuition_id')
             ->leftJoin('teachers','tuitions.teacher_id','=','teachers.id')
             ->select('tuitions.*','tuition_places.*','teachers.*')
-            ->where('teachers.name','ilike',"%" . $teacher . "%")
+            ->where('teachers.name','like',"%" . $teacher . "%")
             ->latest('tuitions.created_at')->get();
 
         return $tuitions;
