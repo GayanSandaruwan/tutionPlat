@@ -46,7 +46,7 @@ Run following command to create the default admin.
 Default admin is  
 *email* - `admin@tuition.lk` *password* - `admin@123`
 
-##Functionalities
+## Functionalities
 1. Creating accounts as Teacher/Student
 2. Teachers can post tuitions.
 3. Students can seach and request for the tuitions.
