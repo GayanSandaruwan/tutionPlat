@@ -192,7 +192,6 @@ class TuitionRequestController extends Controller
             $tuition_request->save();
             return redirect('/teacher/requests');
         }
-
     }
 
     public function student_tuitions(Request $request){
@@ -210,5 +209,4 @@ class TuitionRequestController extends Controller
         return view('student.tuition_request.my_tuitions',['requests'=>$requests]);
 
     }
-
 }
